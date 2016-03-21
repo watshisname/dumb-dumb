@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery.js"></script> 
+    <link href='https://fonts.googleapis.com/css?family=Share+Tech|Bangers' rel='stylesheet' type='text/css'>
+		<style>
+		#main {
+			width: 80%;
+			max-width: 950px;
+			border: 1px gray solid;
+			margin: auto;
+			padding: 10px;
+			background-color: white;
+			border-radius: 10px;}
+
+		body{
+			background-color: black;
+			font-family: 'Share Tech', sans-serif;
+		}
+		
+		h1 {
+			font-family: 'Bangers', cursive;
+			font-size: 50px;
+		}
+	
+		h3 {
+			font-family: 'Bangers', cursive;
+			font-size: 25px;
+		}
+		
+		
+
+		.button {
+			width: 20%;
+			height: auto;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		</style>
+</head>
+
+<body>
+	<div id="main">
+<div id="genre">
+	<h1>What genre are you in the mood for?</h1>
+		<input type="image" src="indie.jpg" class="button" name="genre" onClick="clickGenre('indie',indie)"/>
+		<input type="image" src="rpg.jpg" class="button" name="genre" onClick="clickGenre('rpg',rpg)"/>
+		<input type="image" src="fps.jpg" class="button" name="genre" onClick="clickGenre('fps',fps)"/>
+		<input type="image" src="arcade.jpg" class="button" name="genre" onClick="clickGenre('arcade',arcade)"/>
+</div>
+
+
+<div id ="sub_genre">
+
+</div>
+
+<div id="answers">
+    <!-- answer of the selected sub genre will be generated here -->
+</div>
+
+</div> <!-- closes main div -->
+
+
+<script>
+	var indie = ['casual','puzzle','simulator', 'adventure'];
+		var indie_casual = "<h3>Star Sky 2</h3>Walk through the landscapes, interact with the environment and learn based of the choices you make. Explore the different roads presented and enjoy the sound and sights of the world. <a href = 'http://store.steampowered.com/app/443460/'>BUY ON STEAM</a> <br /> <br /><img src='starsky2.gif' />";
+  		var indie_puzzle = "<h3>Undertale</h3>In this RPG, you control a human who falls underground into the world of monsters. Now you must find your way out... or stay trapped forever. <a href = 'http://store.steampowered.com/app/391540/'>BUY ON STEAM</a> <br /> <br /> <br /> <img src='undertale.gif' />";
+   		var indie_simulator = "<h3>Catlateral Damage</h3>Catlateral Damage is a first-person destructive cat simulator where you play as a cat on a rampage, knocking as much stuff onto the ground as possible. See the world through the eyes of a cat! <a href = 'http://store.steampowered.com/app/329860/'>BUY ON STEAM</a> <br /> <br /> <img src='catlateral_damage.gif' />";
+    	var indie_adventure = "<h3>Slime Rancher</h3>Slime Rancher is a first-person, sandbox experience where players will solve problems and survive through mastery of their vacpack: a vacuum/cannon/backpack that can vacuum up and blast out anything that isn't nailed to the ground. <a href = 'http://store.steampowered.com/app/433340/'>BUY ON STEAM</a> <br /> <br /> <img src='slime_rancher.gif' />"
+
+	var rpg = ['fantasy', 'space', 'MMO', 'horror'];
+    	var rpg_fantasy = "<h3>The Witcher 3: Wild Hunt</h3> The Witcher: Wild Hunt is a story-driven, next-generation open world role-playing game set in a visually stunning fantasy universe full of meaningful choices and impactful consequences. In The Witcher you play as the professional monster hunter, Geralt of Rivia, tasked with finding a child of prophecy in a vast open world rich with merchant cities, viking pirate islands, dangerous mountain passes, and forgotten caverns to explore. <a href = 'http://store.steampowered.com/app/292030/'>BUY ON STEAM</a> <br /> <br /> <img src='witcher3.gif' />";
+    	var rpg_space = "<h3>Elite Dangerous</h3>The 400 billion star systems of the Milky Way are the stage for Elite Dangerous' open-ended gameplay. The real stars, planets, moons, asteroid fields and black holes of our own galaxy are built to their true epic proportions in the largest designed playspace in videogame history. <a href = 'http://store.steampowered.com/app/359320/'>BUY ON STEAM</a> <br />  <br /> <img src='elitedangerous.gif' />";
+    	var rpg_MMO = "<h3>Final Fantasy XIV</h3>Forge friendships, mount chocobos, and board airships as you and your companions create your own unique stories in Eorzea. Set out alone or enlist the aid of friends as you undertake epic quests, battle familiar FINAL FANTASY monsters, and acquire unique abilities and equipment. All the classic elements from the series that you have come to know and love are waiting! <a href = 'http://store.steampowered.com/app/39210/'>BUY ON STEAM</a> <br /> <br /> <img src='ffxiv.gif' />";
+		var rpg_horror = "<h3>Until Dawn</h3>Eight friends trapped together on a remote mountain retreat, and they aren't alone.  Gripped by dread, with tensions running high, they must fight through their fear if they all hope to make through the night in one piece. <a href = 'https://www.playstation.com/en-us/games/until-dawn-ps4/'>BUY ON PLAYSTATION</a> <br /> <br /> <img src='untildawn.gif' />";
+
+	var fps = ['MMO', 'survival', 'space', 'zombie'];
+    	var fps_MMO = "<h3>Destiny: The Taken King</h3>A dark shadow has fallen over our worlds. Oryx, The Taken King, is hell-bent on vengeance and is raising an army of corrupted Taken forces by manipulating the Darkness itself. You must find a way into his impenetrable Dreadnaught ship to defeat The Taken King before he and his dark army consume our civilization and bring our solar system to ruin. <a href = 'https://www.playstation.com/en-us/games/destiny-ps4/'>BUY ON PLAYSTATION</a> <br /> <br /> <img src='destiny.gif' />";
+    	var fps_survival = "<h3>FarCry Primal</h3>As the last survivor of your hunting group, you will learn to craft a deadly arsenal, fend off fierce predators, and outsmart enemy tribes to conquer the land of Oros and become the Apex Predator. <a href = 'http://store.steampowered.com/app/371660/'>BUY ON STEAM</a> <br /> <br /> <img src='farcry_primal.gif' />";
+    	var fps_space = "<h3>Star Wars Battle Front 3</h3>Fight for the Rebellion or Empire in a wide variety of multiplayer matches for up to 40 players, or in exciting challenges inspired by the films available solo, split-screen or through online co-op. <a href = 'https://www.playstation.com/en-us/games/star-wars-battlefront-ps4/'>BUY ON PLAYSTATION</a> <br /> <br /> <img src='swbf.gif' />";
+		var fps_zombie = "<h3>Left4Dead 2</h3>You'll play as one of four new survivors armed with a wide and devastating array of classic and upgraded weapons. In addition to firearms, you'll also get a chance to take out some aggression on infected with a variety of carnage-creating melee weapons, from chainsaws to axes and even the deadly frying pan. <a href = 'http://store.steampowered.com/app/550/'>BUY ON STEAM</a> <br /> <br /> <img src='l4d2.gif' />";
+
+	var arcade = ['space', 'racing', 'rythm', 'adventure'];
+    	var arcade_space = "<h3>Galaga</h3>The gameplay of Galaga puts the player in control of a space ship which is situated on the bottom of the screen. At the beginning of each stage, the area is empty, but over time, enemy aliens fly in formation, and once all of the enemies arrive on screen, they will come down at the player's ship in formations of one or more and may either shoot it or collide with it. <a href = 'http://www.tripletsandus.com/80s/80s_games/html5_galaga.htm'>PLAY FOR FREE</a> <br /> <br /> <img src='galaga.gif' />";
+    	var arcade_racing = "<h3>Pole Position II</h3>The gameplay is the same as in original Pole Position, plus slightly improved graphics, a new opening theme song, and new tracks. In addition to the original Fuji racetrack, there are three others to choose from: Test (resembling Indianapolis Motor Speedway), Seaside (resembling the 1982 United States Grand Prix West circuit in Long Beach), and Suzuka. <a href = 'http://game-oldies.com/play-online/pole-position-ii-atari-7800#'>PLAY FOR FREE</a> <br /> <br /> <img src='pp2.gif' />";
+    	var arcade_rythm = "<h3>Osu!</h3>In each beatmap, a song will play and different rhythmic hit elements (hit circles, sliders and spinners) will appear on the play field. Players must use a pointing device to manipulate these elements in time with the playing song's rhythm in order to earn points. <a href = 'https://osu.ppy.sh/p/download'>FREE DOWNLOAD</a> <br /> <br /> <img src='osu.gif' />";
+		var arcade_adventure = "<h3>Shovel Knight</h3>Shovel Knight has come to this land with two goals: to defeat the evil Enchantress and quest for his lost beloved. He wields a Shovel Blade: a multipurpose weapon whose techniques have now been lost to the ages. Always honest and helpful, Shovel Knight is a shining example of the code of Shovelry: Slash Mercilessly and Dig Tirelessly! <a href = 'http://store.steampowered.com/app/250760/'>BUY ON STEAM</a> <br /> <br /> <img src='shovelknight.gif' />";
+
+        function clickGenre(name,genre){
+            $("#sub_genre").html("");//CLEARS THE DIV
+            $("#answers").html("");//CLEARS THE DIV
+            $.each(genre, function(key,value){
+                    $("#sub_genre").append("<input type='image' name='sub_genre' onClick='clickSubGenre("+name+"_"+value+")' src='"+value+".jpg' width=200/></ br>");
+                });
+        }
+
+        function clickSubGenre(answer){
+            $("#answers").html("You should play: " + answer);
+        }
+
+</script>
+
+
+</body>
+</html>
